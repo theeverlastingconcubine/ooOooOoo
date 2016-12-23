@@ -33,6 +33,15 @@ public class Test {
 		System.out.println(Arrays.toString(arr));
 		
 		
+		String[] stringarray = {"aardvard", "kkoke", "zooo", "aad", "ffeee"};
+		
+		System.out.println(Arrays.toString(stringarray));
+		
+		InsertionSort.sort(stringarray);
+		System.out.println(Arrays.toString(stringarray));
+		
+		
+		
 		
 
 	}
