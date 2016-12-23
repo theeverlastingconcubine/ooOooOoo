@@ -1,35 +1,33 @@
 import java.util.Arrays;
 
+
+
 public class NoBorderArray<Item> {
 	
 	Item[] a;
 	
-//	public NoBorderArray(Comparable[] a){
-//		
-//		this.a = (Item[]) a;
-//				
-//	}
-
+	
 	public NoBorderArray(int n) {
 
 		a = (Item[]) new Object[n];
 
 	}
 
+	
 	public int length() {
 		return a.length;
 	}
+	
+
 	
 	public void set(Item item, int i){
 		if (i > -1 && i < a.length)
 			a[i] = item;
 		else throw new Error("No such index");
-		
-		
+			
 	}
 	
-	
-	
+		
 	public Item value(int i) {
 
 		if (i > -1 && i < a.length){
