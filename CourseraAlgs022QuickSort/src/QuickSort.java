@@ -5,7 +5,7 @@ import java.util.Random;
 
 
 public class QuickSort {
-
+	
 	private static int partition(Comparable[] a, int lo, int hi) {
 
 		int i = lo + 1;
