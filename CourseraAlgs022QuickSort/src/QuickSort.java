@@ -25,7 +25,7 @@ public class QuickSort {
 				
 				}
 			
-			if (i >= j || i==hi || j==lo) break;
+			if (i >= j) break;
 			exchange(a, i, j);
 						
 		}
