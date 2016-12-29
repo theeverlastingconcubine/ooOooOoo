@@ -38,12 +38,20 @@ public class Point2D implements Comparable<Point2D>{
 				
 	}
 	
+	//in odd quadrants tg is increasing, in even decreasing
 	private static class ByPolarAngle implements Comparator<Point2D>{
 		public int compare(Point2D a, Point2D b){
 			
 			if(a.quadrant() != b.quadrant()) return a.quadrant().compareTo(b.quadrant());
-						
-					
+			else if(a.x==0.0 && a.y ==0.0 && b.x == 0.0 && b.y == 0.0) return 0;
+			else if(a.quadrant() == 1.5 && b.quadrant() == 1.5) return 0;
+			else if(a.quadrant() == 3.5 && b.quadrant() == 3.5) return 0;
+			else if(a.quadrant() == 1 && b.quadrant() == 1) {Double tg1 = (a.y/a.x); Double tg2 =(b.y/b.x); return tg1.compareTo(tg2);}
+			else if(a.quadrant() == 3 && b.quadrant() == 3) {Double tg1 = (a.y/a.x); Double tg2 =(b.y/b.x); return tg1.compareTo(tg2);}
+			else if(a.quadrant() == 2 && b.quadrant() == 2) {Double tg1 = (a.y/a.x); Double tg2 =(b.y/b.x); return tg2.compareTo(tg1);}
+			else /*if(a.quadrant() == 4 && b.quadrant() == 4)*/ {Double tg1 = (a.y/a.x); Double tg2 =(b.y/b.x); return tg2.compareTo(tg1);}
+			
+			
 		}
 	}
 	

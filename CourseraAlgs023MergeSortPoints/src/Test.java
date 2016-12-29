@@ -32,7 +32,9 @@ public class Test {
 		System.out.println(Arrays.toString(a));
 		System.out.println();
 		createPoints();
-		System.out.println(Arrays.toString(points));		
+		System.out.println(Arrays.toString(points));	
+		
+		
 		
 		
 		
