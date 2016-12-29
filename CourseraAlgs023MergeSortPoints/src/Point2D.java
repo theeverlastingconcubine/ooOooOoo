@@ -18,9 +18,18 @@ public class Point2D implements Comparable<Point2D>{
 		this.y=y;
 	}
 	
+	public Double[] getCoords(){
+		
+		Double[] point = new Double[2];
+		point[0] = x;
+		point[1] = y;
+		return point;
+	}
+	
 	private static class ByYCoordinate implements Comparator<Point2D>{
 		public int compare(Point2D a, Point2D b){
-			return a.y.compareTo(b.y);
+			if (a.y != b.y) return a.y.compareTo(b.y);
+			else return a.x.compareTo(b.x);
 			}
 				
 	}
