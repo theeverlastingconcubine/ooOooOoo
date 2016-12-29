@@ -39,6 +39,7 @@ public class Point2D implements Comparable<Point2D>{
 	}
 	
 	//in odd quadrants tg is increasing, in even decreasing
+	//generally we're moving in ccw direction
 	private static class ByPolarAngle implements Comparator<Point2D>{
 		public int compare(Point2D a, Point2D b){
 			
