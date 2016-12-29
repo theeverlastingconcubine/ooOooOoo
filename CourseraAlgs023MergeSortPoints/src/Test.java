@@ -47,33 +47,75 @@ public class Test {
 
 	private static int indexOfLowestByY(Point2D[] pt) {
 
-		int maxIndex = 0;
-		Point2D max = pt[0];
+		int minIndex = 0;
+		Point2D min = pt[0];
 
-		for (int i = 0; i < pt.length - 1; i++) {
-			if (Point2D.BY_POLAR_ANGLE.compare(pt[i], pt[i + 1]) < 0) {
-				max = pt[i + 1];
-				maxIndex++;
+		for (int i = 0; i < pt.length; i++) {
+			
+			if (Point2D.BY_Y_COORDINATE.compare(min, pt[i]) > 0) {
+				min = pt[i];
+				minIndex++;
 			}
 		}
 
-		return maxIndex;
+		return minIndex;
 
 	}
 
 	private static void shiftKEntryToZeroPosition(Object[] a, int k) {
 
-		// we must shift by a.length - k to the right;
-
-		int m = a.length - k;
+		
 		int N = a.length;
+		int index, j;
 		Object box = new Object();
 
-		
+		for (int i = 0; i < gcd(k, N); i++) {
+			box = a[i];
+			j = i;
+			while (true) {
+				index = (j + k) % N;
+				if (index == i)
+					break;
+				a[j] = a[index];
+				j = index;
+			}
+			a[j] = box;
+		}
+
+	}
+
+	private static int gcd(int a, int b) {
+
+		if (b == 0)
+			return a;
+		else
+			return gcd(b, a % b);
+
 	}
 
 	public static void main(String[] args) throws FileNotFoundException {
 
+		createPoints();
+		
+		System.out.println(Arrays.toString(points));
+		
+		MergeSortComparator.sort(points, Point2D.BY_POLAR_ANGLE);
+		System.out.println();
+		System.out.println(Arrays.toString(points));
+		
+		int m = indexOfLowestByY(points);
+		System.out.println(m);
+		
+		shiftKEntryToZeroPosition(points, m);
+		
+		System.out.println();
+		System.out.println(Arrays.toString(points));
+		
+
+
+		
+		
+		
 		/*
 		 * Integer[] a = {5,5,76,43,689,5,8,3,5,8899,-10,0,-345,-3,33,100};
 		 * 
@@ -84,27 +126,30 @@ public class Test {
 		 * System.out.println();
 		 */
 
-		createPoints();
-		System.out.println(Arrays.toString(points));
-
-		/*
-		 * for (int i=0; i<points.length-1; i++){ System.out.println(points[i] +
-		 * "  " + Point2D.BY_POLAR_ANGLE.compare(points[i], points[i+1]) + "  "
-		 * + points[i+1]); }
-		 */
+				
+		/*  for (int i=0; i<points.length-1; i++){ System.out.println(points[i] +
+		 "  " + Point2D.BY_POLAR_ANGLE.compare(points[i], points[i+1]) + "  "
+		 + points[i+1]); }
+		
 
 		System.out.println();
-
 		MergeSortComparator.sort(points, Point2D.BY_Y_COORDINATE);
 		System.out.println(Arrays.toString(points));
 
 		System.out.println();
-		Integer[] tt = { 0, 1, 2, 3, 4 };
-		System.out.println(Arrays.toString(tt));
-		System.out.println();
-		shiftKEntryToZeroPosition(tt, 2);
+		Integer[] tt = { 0, 1, 2, 3, 4, 5};
 		System.out.println(Arrays.toString(tt));
 
+		System.out.println();
+
+	 	System.out.println(gcd(27,30));
+
+		shiftKEntryToZeroPosition(tt, 4);
+		System.out.println(Arrays.toString(tt));
+*/
+		
+		
+		
 	}
 
 }

@@ -26,6 +26,7 @@ public class Point2D implements Comparable<Point2D>{
 		return point;
 	}
 	
+	
 	private static class ByYCoordinate implements Comparator<Point2D>{
 		public int compare(Point2D a, Point2D b){
 			if (a.y != b.y) return a.y.compareTo(b.y);
