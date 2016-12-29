@@ -35,7 +35,7 @@ public class Test {
 		System.out.println(Arrays.toString(points));	
 		
 		for (int i=0; i<points.length-1; i++){
-		System.out.println(Point2D.BY_POLAR_ANGLE.compare(points[i], points[i+1]));
+		System.out.println(points[i] + "  " + Point2D.BY_POLAR_ANGLE.compare(points[i], points[i+1]) + "  " + points[i+1]);
 		}
 		
 		
