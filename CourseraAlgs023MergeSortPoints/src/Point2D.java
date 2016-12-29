@@ -26,28 +26,24 @@ public class Point2D implements Comparable<Point2D>{
 	}
 	
 	
-	private double quadrant(){
+	private Double quadrant(){
 		
-		if(x>0 && y>=0) return 1;
-		else if (x<0 && y>=0) return 2;
-		else if (x<0 && y<0) return 3;
-		else if (x>0 && y<0) return 4;
+		if(x>0 && y>=0) return 1.0;
+		else if (x<0 && y>=0) return 2.0;
+		else if (x<0 && y<0) return 3.0;
+		else if (x>0 && y<0) return 4.0;
 		else if(x == 0 && y>0) return 1.5; //is where tg is undefined
 		else if(x == 0 && y<0) return 3.5; //is where tg is undefined
-		else return 0;  //should only be for (0,0) point
+		else return 0.0;  //should only be for (0,0) point
 				
 	}
 	
 	private static class ByPolarAngle implements Comparator<Point2D>{
 		public int compare(Point2D a, Point2D b){
 			
-			if(a.x == 0 && a.y == 0) return -1;
-			else if(b.x == 0 && b.y == 0) return 1;
-			
-			if(a.quadrant() - b.quadrant() < 0) return 1;
-			else if(a.quadrant() - b.quadrant()>)
-			else if(a.x==0 && a.y ==0 && b.x==0 && b.y==0) return 0;
-			
+			if(a.quadrant() != b.quadrant()) return a.quadrant().compareTo(b.quadrant());
+						
+					
 		}
 	}
 	
