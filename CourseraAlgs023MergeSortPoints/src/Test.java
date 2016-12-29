@@ -34,7 +34,9 @@ public class Test {
 		createPoints();
 		System.out.println(Arrays.toString(points));	
 		
-		
+		for (int i=0; i<points.length-1; i++){
+		System.out.println(Point2D.BY_POLAR_ANGLE.compare(points[i], points[i+1]));
+		}
 		
 		
 		
