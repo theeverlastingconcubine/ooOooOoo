@@ -47,7 +47,7 @@ public class Test {
 	
 	public static void main(String[] args) throws FileNotFoundException{
 			
-		Integer[] a = {5,5,76,43,689,5,8,3,5,8899,-10,0,-345,-3,33,100};
+	/*	Integer[] a = {5,5,76,43,689,5,8,3,5,8899,-10,0,-345,-3,33,100};
 		
 		System.out.println(Arrays.toString(a));
 		System.out.println(a.length);
@@ -55,13 +55,17 @@ public class Test {
 		
 		MergeSortComparator.sort(a);
 		System.out.println(Arrays.toString(a));
-		System.out.println();
+		System.out.println();*/
+		
+		
 		createPoints();
 		System.out.println(Arrays.toString(points));	
 		
 		for (int i=0; i<points.length-1; i++){
 		System.out.println(points[i] + "  " + Point2D.BY_POLAR_ANGLE.compare(points[i], points[i+1]) + "  " + points[i+1]);
 		}
+		
+		
 		
 
 		

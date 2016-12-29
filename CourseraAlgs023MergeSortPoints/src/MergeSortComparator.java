@@ -31,6 +31,8 @@ public class MergeSortComparator {
 		sort(a, aux, 0, a.length - 1);
 
 	}
+	
+	
 
 	private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi) {
 
