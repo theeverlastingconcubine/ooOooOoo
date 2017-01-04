@@ -46,15 +46,31 @@ public class MyLinkedList<T> implements Iterable<T> {
 			i++;
 		}
 
-		if (i == N && currentNode.value == value)
+		if ((i < N) || i == N && currentNode.value == value)
 			return i;
 		else
 			return -1000;
 
 	}
-	
-	
-	
+
+	public void addAtPosition(T item, int i) {
+
+		Node currentNode = first;
+		for (int k = 1; k < i-1; k++) {
+			currentNode = currentNode.next;
+		}
+		Node newNode = new Node(item, currentNode.next);
+		currentNode.next = newNode;
+		N++;
+
+	}
+
+	public void addAfter(T item, T afterwhat) {
+		
+		addAtPosition(item, searchItem(afterwhat)+1);	
+		
+
+	}
 
 	// iterator shit
 
