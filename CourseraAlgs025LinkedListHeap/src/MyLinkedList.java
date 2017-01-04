@@ -82,6 +82,8 @@ public class MyLinkedList<T> implements Iterable<T> {
 		currentNode.next = currentNode.next.next;
 			
 	}
+	
+	
 
 	// iterator shit
 
