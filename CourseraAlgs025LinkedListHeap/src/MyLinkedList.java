@@ -31,7 +31,8 @@ public class MyLinkedList<T> implements Iterable<T> {
 	public boolean isEmpty() {
 		return N == 0;
 	}
-
+	
+	
 	public int size() {
 		return N;
 	}
@@ -52,7 +53,8 @@ public class MyLinkedList<T> implements Iterable<T> {
 			return -1000;
 
 	}
-
+	
+	
 	public void addAtPosition(T item, int i) {
 
 		Node currentNode = first;
