@@ -14,6 +14,8 @@ public class Test {
 
 		int N = a.length;
 		Integer[] temp = Arrays.copyOf(a, N);
+		
+		System.out.println("original length " + a.length + " temp length " + temp.length);
 
 		for (int i = 0; i < a.length; i++) {
 
