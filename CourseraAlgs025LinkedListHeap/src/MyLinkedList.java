@@ -71,7 +71,16 @@ public class MyLinkedList<T> implements Iterable<T> {
 		
 		addAtPosition(item, searchItem(afterwhat)+1);	
 		
-
+	}
+	
+	public void deleteAtPosition(int i){
+		
+		Node currentNode = first;
+		for (int k=1; k<i-1; k++){
+			currentNode = currentNode.next;
+		}
+		currentNode.next = currentNode.next.next;
+			
 	}
 
 	// iterator shit
