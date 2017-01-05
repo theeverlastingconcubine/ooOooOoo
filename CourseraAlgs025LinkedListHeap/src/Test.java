@@ -48,6 +48,9 @@ public class Test {
 
 			System.out.print("[" + s + "]--->");
 		}
+		
+		System.out.println();
+		System.out.println();
 
 		Scanner sc = new Scanner(new File("input.txt"));
 
@@ -60,7 +63,7 @@ public class Test {
 		}
 		
 		for (String s: st.keys()){
-			System.out.println(s + "  " st.get(s));
+			System.out.println(s + "  " + st.get(s));
 		}
 
 	}

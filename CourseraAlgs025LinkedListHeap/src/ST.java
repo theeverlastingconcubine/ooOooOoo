@@ -1,53 +1,51 @@
+public class ST<Key, Value> {
 
-public class ST <Key, Value> {
-	
-	
 	private MyLinkedList<Pair<Key, Value>> stlist;
-	
-	
-	public void put(Key key, Value val){
-		
+
+	public ST() {
+		stlist = new MyLinkedList<Pair<Key, Value>>();
+	}
+
+	public void put(Key key, Value val) {
+
 		Pair<Key, Value> newpair = new Pair<Key, Value>(key, val);
 		int whereIsItem = stlist.searchItem(newpair);
-		
-		if (whereIsItem<0) stlist.add(newpair);
-		else {stlist.deleteAtPosition(whereIsItem);
-		stlist.add(newpair);}
-				
-	}
-	
-	// null if key is absent
-	
-	public Value get(Key key){
-	
-		for (Pair<Key, Value> p: stlist){
-			
-			if (p.k().equals(key)) return p.v();
-			else throw new Error("We found nothing");
-			
+
+		if (whereIsItem < 0)
+			stlist.add(newpair);
+		else {
+			stlist.deleteAtPosition(whereIsItem);
+			stlist.add(newpair);
 		}
-		
-		
+
 	}
-	
-	public Iterable<Key> keys(){
+
+	// null if key is absent
+
+	public Value get(Key key){
 		
-		Key[] keys = (Key[]) new Object[stlist.size()];
-		int i=0;
-		for (Pair<Key, Value> s: stlist){
-					keys[i] = s.k();	
+		Pair<Key,Value> tmp = new Pair<Key, Value>(null,null);
+		
+		for(Pair<Key,Value> p:stlist){
+			if (p.returnKey() == key){
+				tmp = p;
+			}}
+		return tmp.returnValue();
+			
+			
+	
+	}
+
+	public Iterable<Key> keys() {
+
+		MyLinkedList<Key> keys = new MyLinkedList<Key>();
+		
+		for (Pair<Key, Value> s : stlist) {
+			keys.add(s.returnKey());
 		}
 		
 		return keys;
-		
-		
-	}
-	
-	
-	
-	
-	
 
-	
-	
+	}
+
 }
