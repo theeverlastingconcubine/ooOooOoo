@@ -34,9 +34,10 @@ public class LinkedList {
 	}
 	
 	public void deleteNode(LinkedListNode currentnode){
-			
+					
 		
-		currentnode = currentnode.next;
+		currentnode.data = currentnode.next.data;
+		currentnode.next = currentnode.next.next;
 			
 	}
 

@@ -15,7 +15,7 @@ public class LinkedListNode {
 		
 	}
 
-/*	@Override
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -41,5 +41,5 @@ public class LinkedListNode {
 		} else if (!next.equals(other.next))
 			return false;
 		return true;
-	}*/
+	}
 }
