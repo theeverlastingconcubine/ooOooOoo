@@ -75,8 +75,8 @@ public class NaiveBst<Key extends Comparable<Key>, Value> {
 	}
 
 	private Node min(Node x){
-		if (x.left ==null) return x;
-		return min(x.left);
+		if (x.left == null) return x;
+		else return min(x.left);
 	}
 	
 	public Key max() {
@@ -85,7 +85,7 @@ public class NaiveBst<Key extends Comparable<Key>, Value> {
 
 	private Node max(Node x){
 		if (x.rigth ==null) return x;
-		return min(x.rigth);
+		else return max(x.rigth);
 	}
 
 
