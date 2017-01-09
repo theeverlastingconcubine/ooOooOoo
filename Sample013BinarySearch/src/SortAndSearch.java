@@ -22,9 +22,10 @@ public class SortAndSearch {
 		
 		assert isSorted(a);
 		int middle = (i2 + i1) / 2;
-		
-		if (whee.compareTo(a[middle]) == 0)
-			return middle;
+	//	System.out.print("  " + middle);
+		if (whee.compareTo(a[middle]) == 0){
+			
+			return middle;}
 		else if (whee.compareTo(a[middle]) < 0)
 			return binarySearch(whee, a, 0, middle-1);
 		else

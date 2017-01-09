@@ -20,11 +20,11 @@ public class Test {
 		System.out.println();
 		System.out.println(SortAndSearch.isSorted(a));
 		
-		System.out.println(SortAndSearch.binarySearch(-500, a));
+		System.out.println(SortAndSearch.binarySearch(4, a));
 		
 		
 		
-		System.out.println(SortAndSearch.isSorted(b));
+		/*System.out.println(SortAndSearch.isSorted(b));
 		//SortAndSearch.insertionSort(b);
 		
 		
@@ -37,7 +37,7 @@ public class Test {
 		System.out.println();
 		System.out.println(SortAndSearch.isSorted(b));
 		
-		System.out.println(SortAndSearch.binarySearch(4, b));
+		System.out.println(SortAndSearch.binarySearch(4, b));*/
 		
 		
 		
