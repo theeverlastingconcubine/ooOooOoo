@@ -3,7 +3,10 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 class StringLengthComparator implements Comparator<String> {
 
@@ -23,6 +26,22 @@ class StringLengthComparator implements Comparator<String> {
 
 }
 
+class CharComparatorIgnorCase implements Comparator<Character> {
+
+	public int compare(Character c1, Character c2) {
+		int i1 = Character.toLowerCase(c1);
+		int i2 = Character.toLowerCase(c2);
+
+		if (i1 == i2)
+			return 0;
+		else if (i1 < i2)
+			return -1;
+		else
+			return 1;
+
+	}
+}
+
 public class Test {
 	// Given a file of Strings.
 	// First we sort by length (bags) then sort alphabetically.
@@ -37,16 +56,45 @@ public class Test {
 
 		String[] words = new String[preArray.size()];
 
-		for (int i = 0; i < words.length; i++)
-			words[i] = preArray.get(i);
+		sc.close();
 
+		for (int i = 0; i < words.length; i++) {
+
+			words[i] = preArray.get(i);
+			char[] temp = words[i].toCharArray();
+			Character[] tempchar = new Character[temp.length];
+			
+			for (int k = 0; k < tempchar.length; k++) {
+				tempchar[k] = temp[k];
+			}
+			SortStringsGeneric.quickSort(tempchar, new CharComparatorIgnorCase());
+			
+			for (int k = 0; k < temp.length; k++) {
+				temp[k] = tempchar[k];
+			}
+			words[i] = new String(temp);
+
+		}
+		
 		System.out.println(words.length);
 		System.out.println(Arrays.toString(words));
-
 		System.out.println();
+		System.out.println();
+
+		
+		
 		SortStringsGeneric.quickSort(words, new StringLengthComparator());
 		System.out.println(Arrays.toString(words));
-
+		
+	
+		
+		
+		
+		
+		
+		
+		
+		
 		System.out.println();
 
 		Integer[] a = { 6, 5, 34, 3, -100, 12, 12, 12, 12, 12, 12, 12, 12, 7, 8, 3, 0, 0, 0 };
