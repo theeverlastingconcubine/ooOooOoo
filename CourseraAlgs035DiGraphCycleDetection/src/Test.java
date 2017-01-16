@@ -14,8 +14,6 @@ public class Test {
 			if (t>V) V=t;}
 		sc.close();
 		
-		System.out.println(V);
-		
 		
 		DiGraph dg = new DiGraph(V+1);
 		Scanner scc = new Scanner(new File("test.txt"));
@@ -28,6 +26,9 @@ public class Test {
 		
 		System.out.println(dg);
 		
+	
+		
+	
 		
 	}
 
