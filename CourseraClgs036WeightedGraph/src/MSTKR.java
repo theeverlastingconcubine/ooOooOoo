@@ -10,16 +10,32 @@ public class MSTKR {
 		
 		PriorityQueue<Edge> pq = new PriorityQueue<Edge>(g.edges());
 		
+		UF uf = new UF(g.V());
+		while(!pq.isEmpty() && mst.size()<g.V()-1){
+			
+			
+			Edge e = pq.delMin();
+			int v = e.either(), w = e.other(v);
+			if(!uf.connected(v,w)){
+				uf.union(v, w);
+				mst.add(e);						
+			}
+			
+			
+			
+		}
+		
 		
 	}
 	
 	
-	public Iterable<Edges> edges(){
+	public Iterable<Edge> edges(){
+		return mst;
 		
 	}
 	
-	public double weigth(){
+	//public double weigth(){
 		
-	}
+	//}
 
 }
