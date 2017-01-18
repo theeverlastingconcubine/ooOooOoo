@@ -35,9 +35,11 @@ public class Test {
 		
 		
 		
-		/*MSTKR mst = new MSTKR(graph);
+		MSTKR mst = new MSTKR(graph);
 		for(Edge e: mst.edges()) System.out.print(e + ", ");
-		System.out.println("\n" + mst.weigth());*/
+		
+		
+		
 		
 		
 		

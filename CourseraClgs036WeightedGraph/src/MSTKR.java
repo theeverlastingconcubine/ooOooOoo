@@ -1,5 +1,4 @@
 import java.util.LinkedList;
-import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class MSTKR {
@@ -8,7 +7,7 @@ public class MSTKR {
 	
 	public MSTKR(WGraph g){
 		
-		PriorityQueue<Edge> pq = new PriorityQueue<Edge>(g.edges());
+		HeapPQ<Edge> pq = new HeapPQ<Edge>(g.edges());
 		
 		UF uf = new UF(g.V());
 		while(!pq.isEmpty() && mst.size()<g.V()-1){

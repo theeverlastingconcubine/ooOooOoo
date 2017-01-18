@@ -1,7 +1,6 @@
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Collection;
 import java.util.LinkedList;
-import java.util.Set;
 
 public class WGraph {
 
@@ -35,7 +34,7 @@ public class WGraph {
 		return adj[v];
 	}
 	
-	public Iterable<Edge> edges(){
+	public Collection<Edge> edges(){
 		
 		return edges;
 		}
