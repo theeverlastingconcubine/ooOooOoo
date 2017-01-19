@@ -12,7 +12,7 @@ public class MinHeap<Key extends Comparable<Key>> {
 	public void insert(Key key) {
 
 		if (N == id.length - 1)
-			resize(2 * N);
+			resize(2 * id.length);
 		id[N + 1] = key;
 		swim(N+1);
 		N++;
@@ -27,8 +27,8 @@ public class MinHeap<Key extends Comparable<Key>> {
 		sink(1);
 		id[N + 1] = null;
 		
-		if (N < (id.length-1) / 2)
-			resize((N+1) / 2);
+		if (N < (id.length-1) / 4)
+			resize(id.length / 2);
 		return min;
 	}
 
@@ -57,7 +57,7 @@ public class MinHeap<Key extends Comparable<Key>> {
 	private void resize(int k) {
 
 		Key[] temp = (Key[]) new Comparable[k];
-		for (int i = 1; i <= id.length-1; i++)
+		for (int i = 0; i <= N; i++)
 			temp[i] = id[i];
 		id = temp;
 
