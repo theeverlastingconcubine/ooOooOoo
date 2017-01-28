@@ -9,12 +9,30 @@ public class MinHeap<Key extends Comparable<Key>> {
 		N = 0;
 	}
 
+	public void changeKey(Key oldkey, Key newkey) {
+		int i = 0;
+		for (i = 0; i < N; i++) {
+			if (id[i].equals(oldkey)) break;
+		}
+		id[i] = newkey;
+		if (less(i, i / 2))
+			swim(i);
+		else
+			sink(i);
+
+	}
+
 	public void insert(Key key) {
 
+<<<<<<< HEAD
 		if (N == id.length-1)
 			resize(2 * N);
+=======
+		if (N == id.length - 1)
+			resize(2 * id.length);
+>>>>>>> branch 'master' of https://github.com/theeverlastingconcubine/ooOooOoo
 		id[N + 1] = key;
-		swim(N+1);
+		swim(N + 1);
 		N++;
 
 	}
@@ -26,9 +44,15 @@ public class MinHeap<Key extends Comparable<Key>> {
 		N--;
 		sink(1);
 		id[N + 1] = null;
+<<<<<<< HEAD
 		
 		if (N < (id.length) / 2)
 			resize((N+3) / 2);
+=======
+
+		if (N < (id.length - 1) / 4)
+			resize(id.length / 2);
+>>>>>>> branch 'master' of https://github.com/theeverlastingconcubine/ooOooOoo
 		return min;
 	}
 
@@ -57,7 +81,11 @@ public class MinHeap<Key extends Comparable<Key>> {
 	private void resize(int k) {
 
 		Key[] temp = (Key[]) new Comparable[k];
+<<<<<<< HEAD
 		for (int i = 0; i < id.length; i++)
+=======
+		for (int i = 0; i <= N; i++)
+>>>>>>> branch 'master' of https://github.com/theeverlastingconcubine/ooOooOoo
 			temp[i] = id[i];
 		id = temp;
 
@@ -74,6 +102,10 @@ public class MinHeap<Key extends Comparable<Key>> {
 		id[i] = id[j];
 		id[j] = tmp;
 
+	}
+	
+	public boolean isEmpty(){
+		return N==0;
 	}
 
 }
