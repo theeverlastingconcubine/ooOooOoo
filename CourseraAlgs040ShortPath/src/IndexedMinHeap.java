@@ -7,7 +7,7 @@
 // somewhere from the middle (almost randomly, depends on keys)
 // we resize whenever empty tail appears. it is expensive: 
 // linear time to search for search 
-// prevMaxIndex + linear time to resize + it happens quite often
+// prevMaxIndex + linear time to resize + it happens quite often!
 
 
 
