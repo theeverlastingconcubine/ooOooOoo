@@ -1,15 +1,17 @@
 import java.util.Arrays;
 
-// resizing shit is just for an exercise - it is SLOW. 
+// resizing shit is just for an exercise - it slows us, 
+// but even resizing seems not happen often
 
 // if we know in advance the size of a heap no resizing needed
 // every operation takes log time. 
 
 // otherwise we pull out elements of pq(indexes) and keys
 // somewhere from the middle (almost randomly, depends on keys)
-// we resize whenever empty tail appears. it is expensive: 
-// linear time to search for search 
-// prevMaxIndex + linear time to resize + it happens quite often!
+// to resize whenever empty tail appears - bad option (worst case - at every step)
+
+// prevMaxIndex is the weakest point - linear time to search
+// and in the worst case it happens every time we pull out min
 
 
 
@@ -56,16 +58,12 @@ public class IndexedMinHeap<Key extends Comparable<Key>> {
 		qp[min] = 0;
 		pq[n+1] = 0; //not needed. delete this after tests
 				
+		//worst case we do this linear operation every time
+		//but if input is more or less random, probably
+		//we're fine
+		
 		if(min == maxIndex) maxIndex = prevMaxIndex(); 
-		
-		// weak slow part is here
-		// we does not need this if we know size of a heap in advance
-		// also no problem to resize if heap is just a heap: 
-		// only getMin() and add() are supported (NO changeKey)
-		// since maintaining qp and keys arrays is slowing us down
-		// in ordinary heap keys = pq and nothing else needed. 
-		
-		
+					
 		int trim = Math.max(maxIndex, n);
 		if (trim <= (pq.length-1)/4) resize((pq.length-1)/2);
 		return min;
@@ -81,15 +79,14 @@ public class IndexedMinHeap<Key extends Comparable<Key>> {
 			return;
 			}
 		
-								
-		if (k > maxIndex) {resize(k); maxIndex = k;}
-		else if (n >= maxIndex && n == pq.length-1) resize(2*n);
+	// if the first index is big enough very few resizes needed then
+	// we expect indexes from 0 to some N
 		
-		System.out.println(n + Arrays.toString(pq) + pq.length);
-		System.out.println(maxIndex + Arrays.toString(qp) + qp.length);
+			
+		if (k > maxIndex) {maxIndex = k; resize(2*maxIndex);}
+		else if (n == pq.length-1) resize(2*n);
 		
 		n++;	
-		
 		pq[n] = k;
 		qp[k] = n;
 		keys[k] = key;
@@ -124,8 +121,7 @@ public class IndexedMinHeap<Key extends Comparable<Key>> {
 		return i;
 						
 	}
-	
-	
+		
 	
 	private void swim(int k) {
 		
@@ -177,6 +173,13 @@ public class IndexedMinHeap<Key extends Comparable<Key>> {
 			pq1[i] = pq[i];
 			qp1[i] = qp[i];
 		}
+		if (maxIndex>n) {
+			for(int i = n+1; i<=maxIndex; i++) {
+				qp1[i] = qp[i];
+				keys1[i] = keys[i]; 
+				}
+		}
+		
 		keys = keys1;
 		pq = pq1;
 		qp = qp1;
