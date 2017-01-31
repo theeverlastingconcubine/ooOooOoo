@@ -7,46 +7,58 @@ public class Test {
 		// test IndexedMinHeap
 		IndexedMinHeap<String> heap = new IndexedMinHeap<String>(10);
 
+		//19 elements here
 		String[] keys = { "b", "e", "x", "mis", "l", "idn", "yr", "face", "cire", "rule", "your", "life", "candy", "mo",
 				"arc", "goo", "cow", "beetle", "kwak" };
 		
-		System.out.println(keys.length);			
+					
 		for (int i = keys.length-1; i >=0; i--) {
-			heap.insert(i, keys[i]);
+				heap.insert(i, keys[i]);
 		}
 		
+			
 		int k = 0;
 		while (!heap.isEmpty()) {
-			
-			System.out.println(k + ": " + heap.minKey() + "  " + heap.getMin());
+			heap.getMin();
+		//System.out.println(k + ": " + heap.minKey() + "  " + heap.getMin());
 			k++;
 		}
 		
 		
 		
 		
-		/*for (int i = 1; i <keys.length; i++) {
-			System.out.println(i);
-			heap.insert(i, keys[i]);
-			
-		}
 		
-		int r = 0;
-		while (!heap.isEmpty()) {
-			
-			System.out.println(r + ": " + heap.minKey() + "  " + heap.getMin());
-			r++;
-		}
+				
+		//23 elements in keys1
 		
 		String[] keys1 = { "b", "e", "x", "mis", "l", "idn", "yr", "face", "cire", "rule", "your", "life", "candy", "mo",
 				"arc", "goo", "cow", "beetle", "kwak", "z", "as", "boka", "zhoka" };
 		
+		for(int i=0; i<keys1.length; i++){
+			System.out.println(i);
+			heap.insert(i, keys1[i]);
+		}
 		
-		Random rnd = new Random();
+		
+		int a = 0;
+		while (!heap.isEmpty()) {
+			
+			System.out.println(a + ": " + heap.minKey() + "  " + heap.getMin());
+			a++;
+		}
+		
+		
+		
+		
+		/*Random rnd = new Random();
 			
 			for(int i = keys1.length-2; i>0; i--){
 				
-				heap.insert(rnd.nextInt(i), keys1[rnd.nextInt(i)]);
+				int a = rnd.nextInt(i);
+				int b = rnd.nextInt(i);
+				System.out.println(a + " " + b);
+				heap.insert(a, keys1[b]);
+				
 			}
 			
 			int q = 0;

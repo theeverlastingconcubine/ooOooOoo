@@ -47,9 +47,7 @@ public class IndexedMinHeap<Key extends Comparable<Key>> {
 	
 	public int getMin(){
 		
-		System.out.println(n + Arrays.toString(pq) + pq.length);
-		System.out.println(maxIndex + Arrays.toString(qp) + qp.length);
-		
+			
 		int min = pq[1];
 		swap(1,n);
 		n--;
@@ -57,8 +55,7 @@ public class IndexedMinHeap<Key extends Comparable<Key>> {
 		keys[min] = null;
 		qp[min] = 0;
 		pq[n+1] = 0; //not needed. delete this after tests
-		
-		
+				
 		if(min == maxIndex) maxIndex = prevMaxIndex(); 
 		
 		// weak slow part is here
@@ -71,12 +68,6 @@ public class IndexedMinHeap<Key extends Comparable<Key>> {
 		
 		int trim = Math.max(maxIndex, n);
 		if (trim <= (pq.length-1)/4) resize((pq.length-1)/2);
-		
-//		if(n < maxIndex) resize(maxIndex); 
-//		else if (n >= maxIndex && n == (pq.length-1)/4) resize((pq.length-1)/2);
-		
-//		System.out.println(pq.length);
-		
 		return min;
 	}
 	
@@ -90,10 +81,12 @@ public class IndexedMinHeap<Key extends Comparable<Key>> {
 			return;
 			}
 		
+								
 		if (k > maxIndex) {resize(k); maxIndex = k;}
-		else if ( k<=n && n==pq.length-1) resize(2*n);
+		else if (n >= maxIndex && n == pq.length-1) resize(2*n);
 		
-	
+		System.out.println(n + Arrays.toString(pq) + pq.length);
+		System.out.println(maxIndex + Arrays.toString(qp) + qp.length);
 		
 		n++;	
 		
@@ -101,6 +94,10 @@ public class IndexedMinHeap<Key extends Comparable<Key>> {
 		qp[k] = n;
 		keys[k] = key;
 		swim(n);
+		
+		System.out.println(n + Arrays.toString(pq) + pq.length);
+		System.out.println(maxIndex + Arrays.toString(qp) + qp.length);
+		System.out.println();
 				
 	}
 	
