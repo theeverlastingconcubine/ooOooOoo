@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 // resizing shit is just for an exercise - it is SLOW. 
 
 // if we know in advance the size of a heap no resizing needed
@@ -24,9 +26,9 @@ public class IndexedMinHeap<Key extends Comparable<Key>> {
 	// by default we have only 10 places available (before resizing)
 
 	public IndexedMinHeap() {
-		keys = (Key[]) new Comparable[110];
-		pq = new int[110];
-		qp = new int[110];
+		keys = (Key[]) new Comparable[11];
+		pq = new int[11];
+		qp = new int[11];
 		n = 0;
 		maxIndex = 0;
 
@@ -45,15 +47,19 @@ public class IndexedMinHeap<Key extends Comparable<Key>> {
 	
 	public int getMin(){
 		
+		System.out.println(n + Arrays.toString(pq) + pq.length);
+		System.out.println(maxIndex + Arrays.toString(qp) + qp.length);
+		
 		int min = pq[1];
-		keys[min] = null;
-		qp[min] = -1;
 		swap(1,n);
 		n--;
 		sink(1);
+		keys[min] = null;
+		qp[min] = 0;
+		pq[n+1] = 0; //not needed. delete this after tests
 		
 		
-	//	if(min == maxIndex) maxIndex = prevMaxIndex(); 
+		if(min == maxIndex) maxIndex = prevMaxIndex(); 
 		
 		// weak slow part is here
 		// we does not need this if we know size of a heap in advance
@@ -63,29 +69,39 @@ public class IndexedMinHeap<Key extends Comparable<Key>> {
 		// in ordinary heap keys = pq and nothing else needed. 
 		
 		
+		int trim = Math.max(maxIndex, n);
+		if (trim <= (pq.length-1)/4) resize((pq.length-1)/2);
 		
-	//	if(n < maxIndex) resize(maxIndex); 
-	//	else if (n >= maxIndex && n == (pq.length-1)/4) resize((pq.length-1)/2);
+//		if(n < maxIndex) resize(maxIndex); 
+//		else if (n >= maxIndex && n == (pq.length-1)/4) resize((pq.length-1)/2);
+		
+//		System.out.println(pq.length);
 		
 		return min;
 	}
 	
 	
 	public void insert(int k, Key key){
+					
+	// if(hasElement(k)) throw new IllegalArgumentException("Element is already in pq");
 		
-		if (k > maxIndex) maxIndex = k;
+		if(hasElement(k)) {
+			System.out.println("Element " + "(" + k + ")" + " is already in pq, nothing happend, continue at your own risk");
+			return;
+			}
+		
+		if (k > maxIndex) {resize(k); maxIndex = k;}
+		else if ( k<=n && n==pq.length-1) resize(2*n);
+		
 	
 		
-		
-	//	if (k > n) resize(k);
-	//	else if ( k<=n && n==pq.length-1) resize(2*n);
-		
 		n++;	
+		
 		pq[n] = k;
 		qp[k] = n;
 		keys[k] = key;
 		swim(n);
-		
+				
 	}
 	
 	public int size() {return n;}
@@ -94,13 +110,20 @@ public class IndexedMinHeap<Key extends Comparable<Key>> {
 	
 	public boolean isEmpty() {return n == 0;}
 	
+	public boolean hasElement(int k) {
+		
+		if (k > maxIndex) return false;
+		else return keys[k] != null;
+		
+	}
+	
 	
 	
 	
 	private int prevMaxIndex(){
 		
 		int i = maxIndex-1; 
-		while(keys[i] == null) i--;
+		while(i>0 && keys[i] == null) i--;
 		return i;
 						
 	}
@@ -146,6 +169,8 @@ public class IndexedMinHeap<Key extends Comparable<Key>> {
 
 	private void resize(int k) {
 
+		
+		
 		Key[] keys1 = (Key[]) new Comparable[k + 1];
 		int[] pq1 = new int[k + 1];
 		int[] qp1 = new int[k + 1];
@@ -158,7 +183,7 @@ public class IndexedMinHeap<Key extends Comparable<Key>> {
 		keys = keys1;
 		pq = pq1;
 		qp = qp1;
-
+		
 	}
 
 }
