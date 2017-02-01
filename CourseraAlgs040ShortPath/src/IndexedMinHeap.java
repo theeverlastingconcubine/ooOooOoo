@@ -37,7 +37,7 @@ public class IndexedMinHeap<Key extends Comparable<Key>> {
 	}
 
 	public IndexedMinHeap(int cap) {
-
+		assert (cap > 1);
 		keys = (Key[]) new Comparable[cap + 1];
 		pq = new int[cap + 1];
 		qp = new int[cap + 1];
@@ -66,36 +66,38 @@ public class IndexedMinHeap<Key extends Comparable<Key>> {
 					
 		int trim = Math.max(maxIndex, n);
 		if (trim <= (pq.length-1)/4) resize((pq.length-1)/2);
+		
 		return min;
 	}
 	
 	
 	public void insert(int k, Key key){
 					
-	// if(hasElement(k)) throw new IllegalArgumentException("Element is already in pq");
+		// if(hasElement(k)) throw new IllegalArgumentException("Element is already in pq");
 		
 		if(hasElement(k)) {
 			System.out.println("Element " + "(" + k + ")" + " is already in pq, nothing happend, continue at your own risk");
 			return;
 			}
 		
-	// if the first index is big enough very few resizes needed then
-	// we expect indexes from 0 to some N
+		// if the first index is big enough very few resizes needed then
+		// we expect indexes from 0 to some N
 		
-			
-		if (k > maxIndex) {maxIndex = k; resize(2*maxIndex);}
-		else if (n == pq.length-1) resize(2*n);
+				
+		if (k > maxIndex) {maxIndex = k;}
+
+	
+		int trim = Math.max(maxIndex, n);
 		
+		if (qp.length <= maxIndex) resize (2*trim);
+		else if (n == pq.length-1) resize (2*trim);
+							
 		n++;	
 		pq[n] = k;
 		qp[k] = n;
 		keys[k] = key;
 		swim(n);
-		
-		System.out.println(n + Arrays.toString(pq) + pq.length);
-		System.out.println(maxIndex + Arrays.toString(qp) + qp.length);
-		System.out.println();
-				
+								
 	}
 	
 	public int size() {return n;}
@@ -162,24 +164,24 @@ public class IndexedMinHeap<Key extends Comparable<Key>> {
 
 	private void resize(int k) {
 
-		
+		int factor=1;
 		
 		Key[] keys1 = (Key[]) new Comparable[k + 1];
 		int[] pq1 = new int[k + 1];
 		int[] qp1 = new int[k + 1];
-
-		for (int i = 0; i <= n; i++) {
+				
+		// when we double we copy everything (pq.length) else we shrink
+		// then we save only up to k
+		
+		if(k > pq.length) factor = pq.length;
+		else factor = k;
+				
+		for (int i = 0; i < factor; i++) {
 			keys1[i] = keys[i];
 			pq1[i] = pq[i];
 			qp1[i] = qp[i];
 		}
-		if (maxIndex>n) {
-			for(int i = n+1; i<=maxIndex; i++) {
-				qp1[i] = qp[i];
-				keys1[i] = keys[i]; 
-				}
-		}
-		
+				
 		keys = keys1;
 		pq = pq1;
 		qp = qp1;
