@@ -45,34 +45,9 @@ public class IndexedMinHeap<Key extends Comparable<Key>> {
 		maxIndex = 0;
 
 	}
-			
-	
-	public int getMin(){
-		
-			
-		int min = pq[1];
-		swap(1,n);
-		n--;
-		sink(1);
-		keys[min] = null;
-		qp[min] = 0;
-		pq[n+1] = 0; //not needed. delete this after tests
-				
-		//worst case we do this linear operation every time
-		//but if input is more or less random, probably
-		//we're fine
-		
-		if(min == maxIndex) maxIndex = prevMaxIndex(); 
-					
-		int trim = Math.max(maxIndex, n);
-		if (trim <= (pq.length-1)/4) resize((pq.length-1)/2);
-		
-		return min;
-	}
-	
 	
 	public void insert(int k, Key key){
-					
+		
 		// if(hasElement(k)) throw new IllegalArgumentException("Element is already in pq");
 		
 		if(hasElement(k)) {
@@ -99,7 +74,53 @@ public class IndexedMinHeap<Key extends Comparable<Key>> {
 		swim(n);
 								
 	}
+			
 	
+	public int getMin(){
+				
+		int min = pq[1];
+		swap(1,n);
+		n--;
+		sink(1);
+		keys[min] = null;
+		qp[min] = 0;
+		pq[n+1] = 0; //not needed. delete this after tests
+				
+		//worst case we do this linear operation every time
+		//but if input is more or less random, probably
+		//we're fine
+		
+		if(min == maxIndex) maxIndex = prevMaxIndex(); 
+					
+		int trim = Math.max(maxIndex, n);
+		if (trim <= (pq.length-1)/4) resize((pq.length-1)/2);
+		
+		return min;
+	}
+	
+	public void update(int k, Key key){
+		
+		assert (hasElement(k));
+		
+		keys[k] = key;
+		swim(qp[k]);
+		sink(qp[k]);
+		
+	}
+	
+	//increase
+	public void decreaseKey(int k, Key key){
+		
+		assert (hasElement(k));
+		assert (key.compareTo(keys[k]) < 0);
+		
+		keys[k] = key;
+		swim(qp[k]);
+		
+		
+	}
+	
+		
 	public int size() {return n;}
 	
 	public Key minKey() {return keys[pq[1]];} 
