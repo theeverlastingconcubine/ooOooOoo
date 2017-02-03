@@ -1,10 +1,13 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Test {
 
-	public static void main(String[] args) {
-
-		//////////////// test IndexedMinHeap //////////////////////////
+	public static void main(String[] args) throws FileNotFoundException {
+		
+			//////////////// test IndexedMinHeap //////////////////////////
 		IndexedMinHeap<Integer, String> heap = new IndexedMinHeap<Integer, String>();
 
 		// 19 elements here, add in decreasing order
@@ -52,6 +55,26 @@ public class Test {
 			q++;
 		}
 		System.out.println("------------------------");
+		
+		
+		Scanner sc = new Scanner(new File("graph.txt"));
+		
+		Graph graph = new Graph(sc.nextInt());
+		
+		while(sc.hasNext()){ 
+			graph.addEdge(new Edge(sc.nextInt(), sc.nextInt(), sc.nextDouble()));
+				}
+		sc.close();
+		
+		System.out.println(graph);
+		
+		PathFinder pathfinder = new PathFinder(graph, 0);
+		
+		for(Edge e: pathfinder.pathTo(6)) System.out.println(e);
+		
+		
 	}
 
 }
+
+

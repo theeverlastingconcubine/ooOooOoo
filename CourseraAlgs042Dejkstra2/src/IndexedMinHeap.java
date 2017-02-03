@@ -4,7 +4,7 @@ import java.util.HashMap;
 public class IndexedMinHeap<Item, Priority extends Comparable<Priority>> {
 	
 	private ArrayList<Item> pq;
-	private HashMap<Item, Integer> qp;
+	private HashMap<Item, Integer> qp;  //we store indexes in pq here
 	private HashMap<Item, Priority> prior;
 	private int n;
 	
@@ -29,7 +29,7 @@ public class IndexedMinHeap<Item, Priority extends Comparable<Priority>> {
 	
 	public void insert(Item a, Priority p){
 		
-		if(hasElement(a)) {System.out.println("CAOUTION, WE ALREADY HAVE IT");
+		if(hasElement(a)) {System.out.println("WE ALREADY HAVE THIS ITEM");
 		return;
 		}
 		
@@ -38,8 +38,7 @@ public class IndexedMinHeap<Item, Priority extends Comparable<Priority>> {
 		qp.put(a, n);
 		prior.put(a, p);
 		swim(n);
-		
-				
+						
 	}
 	
 	
@@ -47,13 +46,34 @@ public class IndexedMinHeap<Item, Priority extends Comparable<Priority>> {
 		
 		
 		Item min = pq.get(1);
+		
 		swap(1, n);
+		n--;
 		sink(1);
-		n--;		
+			
 		prior.remove(min);
 		qp.remove(min);
+		
 		return min;
 	}
+	
+	public void updatePriority(Item it, Priority p){
+		
+		prior.put(it, p);
+		swim(qp.get(it));
+		sink(qp.get(it));
+		
+		
+	}
+	
+	public void decreasePriority(Item it, Priority p){
+			
+		prior.put(it, p);
+		swim(qp.get(it));
+		
+	}
+	
+	
 	
 		
 	
