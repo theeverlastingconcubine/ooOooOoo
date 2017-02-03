@@ -34,7 +34,7 @@ public class IndexedMinHeap<Item, Priority extends Comparable<Priority>> {
 		}
 		
 		n++;
-		pq.add(a);
+		pq.add(n,a);
 		qp.put(a, n);
 		prior.put(a, p);
 		swim(n);
@@ -44,6 +44,7 @@ public class IndexedMinHeap<Item, Priority extends Comparable<Priority>> {
 	
 	
 	public Item getMin(){
+		
 		
 		Item min = pq.get(1);
 		swap(1, n);
