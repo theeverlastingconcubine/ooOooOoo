@@ -12,6 +12,7 @@ public class Edge {
 		
 	}
 	
+	
 	public int from() {return v;}
 	public int to() {return w;}
 	public double cost() {return cost;}
