@@ -19,7 +19,10 @@ public class RotateArray2D {
 							
 				while(layer<n/2){
 								
-				for(int i = layer; i< n - layer - 1; i++){ //for some reason we need this -1 WHYYYY
+				for(int i = layer; i< n - layer - 1; i++){ //for some reason we need this -1 WHYYYY->
+															//solved: otherwise last entry in the row 
+															//is overwritten with the first (which already
+															//keeps new value (from the bottom left corner))
 												
 				Object tmp = a[layer][i];
 			
