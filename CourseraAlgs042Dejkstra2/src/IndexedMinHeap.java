@@ -124,6 +124,8 @@ public class IndexedMinHeap<Item, Priority extends Comparable<Priority>> {
 		qp.put(b, i);
 		
 	}
+	
+	
 
 	
 	
