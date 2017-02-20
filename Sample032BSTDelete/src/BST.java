@@ -58,6 +58,31 @@ public class BST<Key extends Comparable<Key>, Value> {
 	}
 	
 	
+	private Node delete(Node x, Key key){
+		
+		if(x==null) return null;
+		int cmp = key.compareTo(x.key);
+		
+		if(cmp>0) delete(x.right, key);
+		else if (cmp>0) delete(x.left, key);
+		else{ 
+			if(x.left == null) return x.right;
+			if(x.right == null) return x.left;
+			
+			Node t = x; 
+			x = getMin(x.right);
+			x.right = delMin(t.right);
+			x.left = t.left;
+		}
+		
+		return x;
+		
+		
+		
+	}
+	
+	
+	
 	
 	public Value getMin(){
 		if (root==null) return null;
