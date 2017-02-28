@@ -2,21 +2,28 @@ import java.util.ArrayList;
 
 public class Graph {
 	
-	private int V;
+	private int V,E;
 	private ArrayList<Edge>[] adj;
 	
 	public Graph(int V){
 		this.V = V;
+		E=0;
 		adj = (ArrayList<Edge>[]) new ArrayList[V];
 		for(int v = 0; v<V; v++){
 			adj[v] = new ArrayList<Edge>();
 		}
 	}
 	
+	public int E(){
+		return E;
+	}
+	
 	
 	public void addEdge(Edge e){
 		int v = e.either();
 		int w = e.other(v);
+		
+		E++;
 		
 		adj[v].add(e);
 		adj[w].add(e);

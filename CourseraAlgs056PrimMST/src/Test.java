@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 public class Test {
 	
+	
+	//actually 
+	
 	public static void main(String[] args) throws FileNotFoundException{
 		
 		Scanner sc = new Scanner(new File("graph.txt"));
@@ -17,6 +20,12 @@ public class Test {
 		
 		System.out.println(g);
 		
+		MST mst = new MST(g);
+		for(Edge e: mst.tree()) System.out.println(e);
+		
+		EagerPrim mstt = new EagerPrim(g);
+		
+		for(Edge e: mstt.tree()) System.out.println(e);
 	
 	
 	

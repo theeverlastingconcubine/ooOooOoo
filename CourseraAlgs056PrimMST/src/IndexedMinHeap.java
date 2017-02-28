@@ -27,6 +27,10 @@ public class IndexedMinHeap<Item, Priority extends Comparable<Priority>> {
 	
 	public Priority minPriority() {return prior.get(pq.get(1));}
 	
+	public Priority getPriority(Item item){
+		return prior.get(item);
+	}
+	
 	public void insert(Item a, Priority p){
 		
 		if(hasElement(a)) {System.out.println("WE ALREADY HAVE THIS ITEM");
