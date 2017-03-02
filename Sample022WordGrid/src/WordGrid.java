@@ -45,13 +45,17 @@ public class WordGrid {
 		
 		if(i<0 || j<0 || i>=m || j>=n || k>word.length()-1) {return false;}
 		
-		if(grid[i][j] == word.charAt(k)) {char temp = grid[i][j]; grid[i][j] = '?';
+		if(grid[i][j] == word.charAt(k)) {
+			
+			char temp = grid[i][j]; grid[i][j] = '?';
 		
-		if (k == word.length() - 1) { return true;}
-		else if (  dfs(grid, word, i-1,j,k+1) 
-				|| dfs(grid, word, i+1,j,k+1)
-				|| dfs(grid, word, i,j+1,k+1)
-				|| dfs(grid, word, i,j-1,k+1)) {grid[i][j] = temp; return true;}
+			if (k == word.length() - 1) { return true;}
+			else if (  dfs(grid, word, i-1,j,k+1) 
+					|| dfs(grid, word, i+1,j,k+1)
+					|| dfs(grid, word, i,j+1,k+1)
+					|| dfs(grid, word, i,j-1,k+1)) {grid[i][j] = temp; 
+					
+					return true;}
 				
 		}
 		
