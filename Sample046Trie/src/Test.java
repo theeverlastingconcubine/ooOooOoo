@@ -24,6 +24,12 @@ public class Test {
 		System.out.println("array: " + Arrays.toString(a));
 		System.out.println(isSorted(a));
 		
+		System.out.println("has prefix " + trie.hasPrefix("edik"));
+		System.out.println("has prefix " + trie.hasPrefix("carefuly"));
+		System.out.println("has prefix " + trie.hasPrefix("caret"));
+		System.out.println("has prefix " + trie.hasPrefix("chant"));
+		System.out.println("has prefix " + trie.hasPrefix("changes"));
+		
 		
 		
 

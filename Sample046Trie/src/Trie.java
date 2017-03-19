@@ -42,6 +42,17 @@ public class Trie {
 		
 	}
 	
+	public boolean hasPrefix(String prefix){
+		Node node = root; 
+		for(int i = 0; i<prefix.length(); i++){
+			int c = prefix.charAt(i) - 'a';
+			if (node.next[c]!=null) node = node.next[c];
+			else return false;
+			}
+		return true;
+		
+	}
+	
 	public LinkedList<String> allTrie(){
 		LinkedList<String> list = new LinkedList<String>();
 		addStrings(root, list);		
