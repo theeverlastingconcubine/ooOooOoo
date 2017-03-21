@@ -8,6 +8,13 @@ public class Test {
 		
 		System.out.println(urlify(" hello darkness my old friend "));
 		
+		System.out.println(Character.getNumericValue('A'));
+		String word = "ACAB";
+		System.out.println(word.charAt(0));
+		
+		
+		
+		
 		
 		
 	}
