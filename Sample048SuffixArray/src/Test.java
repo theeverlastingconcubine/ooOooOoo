@@ -14,7 +14,8 @@ public class Test {
 			i++;
 		}
 		
-		System.out.println(searcher.binSearch(suffix, "is my head"));
+		System.out.println(searcher.binSearch(suffix, "is my head")); //works
+		System.out.println(suffix[5]);
 		
 		
 	}
