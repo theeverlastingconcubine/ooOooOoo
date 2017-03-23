@@ -1,5 +1,8 @@
 import java.util.Arrays;
 
+
+//abandoned, not used at all
+
 public class InContext {
 	
 	private String[] suffix;
