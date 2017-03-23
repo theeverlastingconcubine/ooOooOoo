@@ -18,7 +18,7 @@ public class SuffixArray {
 		}
 	}
 	
-	private static class Suffix implements Comparable<Suffix>{
+	private static class Suffix implements Comparable<Suffix>, StringLike{
 		
 		private final String text;
 		private final int index;
@@ -32,7 +32,7 @@ public class SuffixArray {
 			return text.length()-index;
 		}
 		
-		private char charAt(int i){
+		public int charAt(int i){
 			return text.charAt(index+i);
 		}
 		
