@@ -1,13 +1,15 @@
 
 public class Quick3Sort {
 	
+	public static void sort(StringLike[] a){
+		sort(a,0,a.length-1,0);
+	}
+	
 	private static void sort(StringLike[] a, int lo, int hi, int d){
 		
 		if(hi<=lo) return;
-		
 		int lt=lo;
 		int gt=hi;
-		
 		int v=charAt(a[lo],d);
 		
 		int i=lo+1;
@@ -29,24 +31,19 @@ public class Quick3Sort {
 		
 	}
 	
+	private static int charAt(StringLike stringlike, int i){
+		int n=stringlike.length();
+		if(i>=n) return -1;
+		return stringlike.charAt(i);
+	}
+	
 	private static void swap(StringLike[] a, int i, int j){
 		StringLike t = a[i];
 		a[i] = a[j];
 		a[j] = t;
 	}
 	
-	public static void sort(StringLike[] a){
-		sort(a,0,a.length-1,0);
 		
-		
-		
-	}
-	
-	private static int charAt(StringLike stringlike, int i){
-		int n=stringlike.length();
-		if(i>=n) return -1;
-		return stringlike.charAt(i);
-	}
 	
 	
 	

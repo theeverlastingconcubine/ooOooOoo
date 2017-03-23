@@ -14,7 +14,7 @@ public class SuffixArray {
 		
 		for(int i= 0; i<N; i++){
 			suffixes[i] = new Suffix(text,i);
-			Arrays.sort(suffixes);
+			Quick3Sort.sort(suffixes);
 		}
 	}
 	
@@ -28,7 +28,7 @@ public class SuffixArray {
 			this.index= index;
 		}
 		
-		private int length(){  //i=0 -> len=N
+		public int length(){  //i=0 -> len=N
 			return text.length()-index;
 		}
 		

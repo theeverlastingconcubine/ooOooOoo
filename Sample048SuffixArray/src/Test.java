@@ -6,6 +6,10 @@ public class Test {
 	
 	public static void main(String[] args) throws FileNotFoundException{
 		
+		/*String[] txt = {"over","my","skin","something","never","happend","if","only","all"};
+		Quick3Sort(txt);*/
+		
+		/*
 		Scanner sc = new Scanner(new File("text.txt")).useDelimiter("\\Z");
 		String text = sc.next();
 		System.out.println(text);
@@ -25,7 +29,7 @@ public class Test {
 			int from2 = Math.max(0, sa.index(i) - context);
 			int to2 = Math.min(n, sa.index(i) + context + query.length());
 			System.out.println(text.substring(from2,to2));
-		}
+		}*/
 		
 		
 		
