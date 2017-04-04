@@ -7,6 +7,8 @@ public class Test {
 		// we want to shift all zeroes to the left
 		// we want to shift all ones to the right
 		int[] a = { 0, 1, 2, 3, 1, 15, 4, 5, 6, 15, 1, 0, 6, 1, 0, 4, 18, 5, 1, 7, 0, 1, 0, 0, 1, 0 };
+		
+	
 
 		int count = 0;
 

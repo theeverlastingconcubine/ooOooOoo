@@ -20,11 +20,24 @@ public class Test {
 			stringLikeArray[i] = new Suffix(txt,i); 
 		}
 		
-		String[] stringArray = {"good","morning","worm","your","honor","the","crown","will","plainly","show","the","prisoner"};
+		StringLikeString[] stringArray = {
+				new StringLikeString("good"),
+				new StringLikeString("morning"),
+				new StringLikeString("worm"),
+				new StringLikeString("your"),
+				new StringLikeString("honor"),
+				new StringLikeString("the"),
+				new StringLikeString("crown"),
+				new StringLikeString("will"),
+				new StringLikeString("plainly"),
+				new StringLikeString("show"),
+				new StringLikeString("the"),
+				new StringLikeString("prisoner")};
 	
 		Quick3Sort.sort(stringLikeArray); //---- this works
 		
 		Quick3Sort.sort(stringArray); //-----this not works
+		for(StringLikeString s: stringArray) System.out.println(s);
 		
 		
 	}

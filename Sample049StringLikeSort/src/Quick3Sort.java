@@ -32,8 +32,8 @@ public class Quick3Sort {
 	}
 	
 	private static int charAt(StringLike stringlike, int i){
-		int n=stringlike.length();
-		if(i>=n) return -1;
+		int n = stringlike.length();
+		if(i >= n) return -1;
 		return stringlike.charAt(i);
 	}
 	
