@@ -50,7 +50,7 @@ public static void main(String[] args){
 		
 		System.out.println(bst.isBalanced());
 		
-		KVal<Integer, String>[] a = (KVal<Integer, String>[]) new KVal[15];
+		KVal<Integer, String>[] a = (KVal<Integer, String>[]) new KVal[222];
 		
 		for(int i =0;i<a.length; i++){
 			a[i] = new KVal(2*a.length-i, "dan");
@@ -64,6 +64,7 @@ public static void main(String[] args){
 		
 		minimalBst(a,minimal);
 		System.out.println(minimal);
+		System.out.println(minimal.isBalanced());
 					
 	}
 
