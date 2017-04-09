@@ -11,7 +11,7 @@ public class SpiralArray {
 		
 		String[][] a = new String[n][n];
 		
-		int vert1= 0;
+		int vert1 = 0;
 		int vert2 = n-1;
 		int hor1 = 0;
 		int hor2 = n-1;
@@ -26,7 +26,7 @@ public class SpiralArray {
 			}
 			
 			for(int i = hor1+1; i<=hor2; i++){
-				a[vert2][i] = "—";
+				a[vert2][i] = "ï¿½";
 				k++;
 			}
 			
@@ -36,7 +36,7 @@ public class SpiralArray {
 			}
 			
 			for(int i=hor2-1; i>hor1; i--){
-				a[vert1][i] = "—";
+				a[vert1][i] = "ï¿½";
 				k++;
 			}
 			
