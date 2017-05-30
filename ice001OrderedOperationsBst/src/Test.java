@@ -29,6 +29,15 @@ public class Test {
 		for(ArrayList<BST<Integer, String>.Node> level: bst.levels()) System.out.println(level);
 		
 		System.out.println(bst.ceiling(101));
+		
+		System.out.println(bst.rank(-1));
+		
+		System.out.println();
+		System.out.println();
+		
+		for(int i = 0; i<bst.size(); i++){
+			System.out.println(bst.select(i));
+		}
 	}
 
 }
