@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class BST<Key extends Comparable<Key>, Value> {
 	
@@ -105,13 +106,86 @@ public class BST<Key extends Comparable<Key>, Value> {
 		
 	}
 	
+	public ArrayList<LinkedList<Key>> allSequences(){
+		return allSequences(root);
+	}
 	
 	
 	
+	private ArrayList<LinkedList<Key>> allSequences(Node x){
+		
+		ArrayList<LinkedList<Key>> result = new ArrayList<LinkedList<Key>>();
+		
+		if(x==null) {
+			result.add(new LinkedList<Key>());
+			return result;
+		}
+		
+		LinkedList<Key> prefix = new LinkedList<Key>();
+		prefix.add(x.key);
+		
+		ArrayList<LinkedList<Key>> leftSequences = allSequences(x.left);
+		ArrayList<LinkedList<Key>> rigthSequences = allSequences(x.right);
+		
+		for(LinkedList<Key> left: leftSequences){
+			for(LinkedList<Key> right: rigthSequences){
+				ArrayList<LinkedList<Key>> mixed = new ArrayList<LinkedList<Key>>();
+				mix(left, right, mixed, prefix);
+				result.addAll(mixed);
+								
+			}
+		}
+		
+		return result;
+			
+	}
 	
-
+	private void mix(LinkedList<Key> first, LinkedList<Key> second, ArrayList<LinkedList<Key>> results, LinkedList<Key> prefix){
+		
+		if (first.size()==0 || second.size()==0) {
+			
+			LinkedList<Key> result = new LinkedList<Key>();
+			result.addAll(prefix);
+			result.addAll(first);
+			result.addAll(second);
+			results.add(result);
+			return;
+			
+		}
+		
+		Key headFirst = first.removeFirst();
+		prefix.addLast(headFirst);
+		mix(first, second, results, prefix);
+		prefix.removeLast();
+		first.addFirst(headFirst);
 		
 		
+		Key headSecond = second.removeFirst();
+		prefix.addLast(headSecond);
+		mix(first, second, results, prefix);
+		prefix.removeLast();
+		second.addFirst(headSecond);
+				
+	}
+	
+	public String formString(){
+		StringBuilder sb = new StringBuilder();
+		formString(root, sb);
+		return sb.toString();
+	}
+	
+	
+	private void formString(Node x, StringBuilder sb){
+		
+		if (x==null) {sb.append("X"); return;}
+		sb.append(x.key);
+		formString(x.left, sb);
+		formString(x.right, sb);
+		
+	}
+	
+	
+			
 		
 
 
